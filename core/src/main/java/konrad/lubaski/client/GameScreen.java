@@ -2,11 +2,9 @@ package konrad.lubaski.client;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class GameScreen implements Screen {
@@ -15,12 +13,15 @@ public class GameScreen implements Screen {
     private Stage stage;
     private Texture boardTexture;
     private final ChessGame chessGame;
+    private FigureActor figureActor;
 
     public GameScreen(ChessGame chessGame) {
         this.chessGame = chessGame;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Dimensions.WINDOW_WIDTH, Dimensions.WINDOW_HEIGHT);
         stage = new Stage(new ScreenViewport(), chessGame.getBatch());
+        figureActor = new FigureActor();
+        stage.addActor(figureActor);
         Gdx.input.setInputProcessor(stage);
         boardTexture = new Texture("chessboard.png");
     }
