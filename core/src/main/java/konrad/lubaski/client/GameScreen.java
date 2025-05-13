@@ -20,7 +20,7 @@ public class GameScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Dimensions.WINDOW_WIDTH, Dimensions.WINDOW_HEIGHT);
         stage = new Stage(new ScreenViewport(), chessGame.getBatch());
-        figureActor = new FigureActor();
+        figureActor = new FigureActor(Piece.PAWN, Color.WHITE);
         stage.addActor(figureActor);
         Gdx.input.setInputProcessor(stage);
         boardTexture = new Texture("chessboard.png");
